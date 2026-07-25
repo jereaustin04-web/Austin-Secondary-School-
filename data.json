@@ -1,0 +1,33 @@
+{
+  "students": [
+    {
+      "exam_number": "2026001",
+      "password": "1234",
+      "name": "Austin Jere",
+      "class": "Form 4A"
+    },
+    {
+      "exam_number": "2026002",
+      "password": "5678",
+      "name": "Tiyembekeze Banda",
+      "class": "Form 3B"
+    }
+  ],
+  "teachers": [
+    {
+      "email": "teacher@school.com",
+      "password": "admin123",
+      "name": "Mr Banda",
+      "subject": "Maths"
+    }
+  ],
+  "results": [
+    {
+      "exam_number": "2026001",
+      "subject": "Maths",
+      "term1": 75,
+      "term2": 80,
+      "term3": 85
+    }
+  ]
+}
