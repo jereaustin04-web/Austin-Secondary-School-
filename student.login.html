@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ny">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login</title>
+<style>
+body { 
+    font-family: Arial, sans-serif; 
+    background: #e8f0fe; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+}
+.login-box { 
+    background: white; 
+    width: 300px; 
+    padding: 25px; 
+    border-radius: 10px; 
+    text-align: center; 
+    box-shadow: 0 0 10px gray; 
+}
+input { 
+    width: 90%; 
+    padding: 10px; 
+    margin: 8px 0; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button { 
+    background: blue; 
+    color: white; 
+    border: none; 
+    padding: 10px 25px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 95%;
+    margin-top: 10px;
+}
+button:hover { 
+    background: darkblue; 
+}
+</style>
+</head>
+<body>
+<div class="login-box">
+    <h2>Student Login</h2>
+    <form id="loginForm">
+        <input type="text" id="exam_number" placeholder="Enter Exam Number" required>
+        <input type="password" id="password" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const exam_number = document.getElementById('exam_number').value;
+    const password = document.getElementById('password').value;
+
+    // Werengani data kuchokera ku data.json
+    const res = await fetch('data.json');
+    const data = await res.json();
+    
+    // Sakani wophunzira
+    const student = data.students.find(s => 
+        s.exam_number === exam_number && s.password === password
+    );
+
+    if(student){
+        // Sungani pa LocalStorage
+        localStorage.setItem('student', JSON.stringify(student));
+        alert('Login Yachita! Tikulowa...');
+        window.location.href = 'results.html';
+    } else {
+        alert('Exam Number kapena Password ndi yolakwika!');
+    }
+});
+</script>
+</body>
+  </html>
